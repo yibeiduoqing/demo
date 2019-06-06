@@ -1,0 +1,57 @@
+<style type="text/css">
+  .container {
+    width: 960x;
+    margin: 60px auto;
+  }
+  .container ul {
+    float: left;
+    width: 300px;
+    margin-right: 20px;
+  }
+  .container ul li {
+    margin-bottom: 20px;
+  }
+  .container ul li img {
+    width: 300px;
+  }
+</style>
+</head>
+<body>
+  <div class="container" id="container">
+    <ul class="col">
+      <li><img src="" alt="" /></li>
+    </ul>
+    <ul class="col">
+      <li><img src="" alt="" /></li>
+    </ul>
+    <ul class="col">
+      <li><img src="" alt="" /></li>
+    </ul>
+  </div>
+</body>
+<script type="text/javascript">
+// 一定要引入jquery
+// var a = document.getElementsByTagName(li);
+function loadMeinv() {
+  var data = 0;
+  for (var i = 0; i < 9; i++) {
+    data = parseInt(Math.random() * 9);
+    var html = "";
+    html = '<li><img src="images/'+data+'.jpg"></li>';
+    $minUl = getMinUl();
+    $minUl.append(html);
+  };
+};
+loadMeinv();
+function getMinUl() {
+  var $arrUl = $("#container .col");
+  console.log($arrUl)
+  var $minUl =$arrUl.eq(0);
+  $arrUl.each(function(index, elem){
+    console.log(elem)
+    if ($(elem).height() < $minUl.height()) {
+      $minUl = $(elem);
+    }
+  });
+  return $minUl;
+}
