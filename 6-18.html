@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>cavas</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+  </body>
+  <script>
+      window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        //耳朵1
+        context.moveTo(20,20)
+
+        context.lineTo(40,20);
+        //横线的宽度
+        // context.lineWidth = 1;
+        //横线颜色,要用字符串的颜色
+        context.strokeStyle = "#645";
+        //状态为划
+
+
+        // 如果需要多个线条，只需要增加lineto
+        context.lineTo(40,40);
+        context.lineTo(20,20);
+
+        // 颜色填充；
+        context.fillStyle = "#535";
+        context.fill();
+
+        //耳朵
+        context.moveTo(120,20)
+
+        context.lineTo(140,20);
+        //横线的宽度
+        // context.lineWidth = 1;
+        //横线颜色,要用字符串的颜色
+        context.strokeStyle = "#645";
+        //状态为划
+
+
+        // 如果需要多个线条，只需要增加lineto
+        context.lineTo(120,40);
+        context.lineTo(120,20);
+
+        // 颜色填充；
+        context.fill();
+        //嘴巴
+        context.moveTo(60,40)
+        context.lineTo(100,40);
+        context.strokeStyle = "#645";
+        context.stroke();
+        context.moveTo(68,40)
+        context.lineTo(68,47);
+        context.lineTo(74,47);
+        context.lineTo(74,47)
+        context.lineWidth = 1;
+        context.stroke();
+
+      }
+
+  </script>
+
+</html>
