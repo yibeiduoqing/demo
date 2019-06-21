@@ -1,0 +1,26 @@
+A域的前端页面访问B域是不被允许的
+
+解决方法
+
+1、服务器带由访问
+
+在A域的服务端增加一个后台接口，由A域的JS，用过AJAX访问域名的接口，之后有A域名的后台去访问B域名，在将数据放回给A域的前端
+
+2、JSONP跨域
+
+基本原理：动态的创建一个SCRIPT的标签，将请求的url地址设置为该标签的SRC（此方法并非AJAX访问，该方法需要前端和后端代码均进行相应的修改与实现，比较流行的框架JQ等，当中已经封装了JSONP的实现，因此，通常全段改动较少，当时后台需要多一步实现）
+
+var scriptEle = document.createElement("script");
+    scriptEle.src = "http://suggestion.baidu.com/su?wd=XXX&zxmode=1&json=1&p=3&cb=update";
+    // cb也就是我们需要执行的函数参数
+    document.body.appendchild(scriptEle);
+    function update(date){
+      console.log(date)
+    }
+3、iframe跨域
+
+动态的创建一个iframe标签，并访问url 4、HTML5的跨域
+
+在服务器端进行适当的修改，在服务端返回的头部信息里postMessage方法
+
+5、flash的跨域
