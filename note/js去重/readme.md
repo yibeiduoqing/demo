@@ -1,36 +1,27 @@
-# 原型链
-
-三种方式
-1、简单继承
-2、借用构造函数继承
-3、组合模式的继承
-
-## 简单继承
+# js去重
+##1.遍历数组法
+实现思路：新建一个数组，遍历去要重的数组，当值不在新数组的时候（indexOf为-1）就加入该新数组中；
 ```js
-// 父类
- function Parent() {
-   this.name = "123";
-   this.friends = ["11", "22"];
- }
- Parent.prototype.showInfo = function() {
-   console.log('parent:', this.friends);
- }
- // 子类
- function Son(age) {
-   this.age = age;
- }
- // 继承
- // 子级的原型对象被父级的实例覆盖
- Son.prototype = new Parent();
- Son.prototype.showInfo = function() {
-   console.log('son:', this.friends);
-   console.log('age:', this.age)
- }
- //查找自己,往上以及查找原型对象，依次类推（作用域链一样）
- var demo1 = new Son(22);
- var demo2 = new Son(23);
- demo1.friends.push("33");
- console.log(demo1.showInfo == demo2.showInfo);
- demo1.showInfo();
- demo2.showInfo();
- ```
+var arr=[2,8,5,0,5,2,6,7,2];
+function unique1(arr){
+  var hash=[];
+  for (var i = 0; i < arr.length; i++) {
+     if(hash.indexOf(arr[i])==-1){
+      hash.push(arr[i]);
+     }
+  }
+  return hash;
+}
+```
+
+## 2排序比较法（巧妙转换）
+```js
+function sortarr(arr){
+    var arrsort=arr.sort();//对原数组进行排序
+    var newarr=[];//新建空数组
+    newarr.push(arrsort[0]);//将排序后数值的第一项给添加到新数组
+    for(var i=1;i<arrsort.length;i++){//遍历排序后的数组
+        if(arrsort[i]!==newarr[newarr.length-1]){newarr.push(arrsort[i])}//若当前项与新数组最后一项不同，这添加到新数组
+    }
+    return newarr;//返回新数组
+}```
