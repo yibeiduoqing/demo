@@ -1,5 +1,5 @@
 # js去重
-##1.遍历数组法
+## 1.遍历数组法
 实现思路：新建一个数组，遍历去要重的数组，当值不在新数组的时候（indexOf为-1）就加入该新数组中；
 ```js
 var arr=[2,8,5,0,5,2,6,7,2];
@@ -14,7 +14,7 @@ function unique1(arr){
 }
 ```
 
-## 2排序比较法（巧妙转换）
+## 2.排序比较法（巧妙转换）
 ```js
 function sortarr(arr){
     var arrsort=arr.sort();//对原数组进行排序
@@ -24,4 +24,16 @@ function sortarr(arr){
         if(arrsort[i]!==newarr[newarr.length-1]){newarr.push(arrsort[i])}//若当前项与新数组最后一项不同，这添加到新数组
     }
     return newarr;//返回新数组
-}```
+}
+```
+
+## 3.对象属性法（另辟新径）
+```js
+function attribute(arr){
+    var obj={};//新建空对象
+    var newarr=[];//新建空数组
+    for(var i=0; i<arr.length;i++){obj[arr[i]]=null;}//将原数组项作为对象的key进行赋值
+    for( var attr in obj){newarr.push(Math.floor(attr));}//遍历对象，取出key值添加到新数组
+    return newarr;//返回新数组
+}
+```
