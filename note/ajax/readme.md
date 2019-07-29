@@ -1,4 +1,4 @@
-##AJAX
+# AJAX
 ```js
 <!DOCTYPE html>
 <html>
